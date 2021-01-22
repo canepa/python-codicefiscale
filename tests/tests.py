@@ -458,7 +458,7 @@ class CodiceFiscaleTestCase(unittest.TestCase):
                 result['birthplace'].upper())
 
             omocodes = obj_decoded.get('omocodes', [])
-            self.assertEqual(8, len(omocodes))
+            self.assertEqual(128, len(omocodes))
             self.assertEqual(omocodes, codes)
 
     def test_is_omocode(self):
