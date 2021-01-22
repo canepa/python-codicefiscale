@@ -81,21 +81,19 @@ def _get_omocodes(code):
     codes = []
 
     for i in reversed(_OMOCODIA_SUBS_INDEXES):
-        code_chars[i] = code_chars[i].translate(_OMOCODIA_DECODE_TRANS)
-
-    code = ''.join(code_chars)
-    code_cin = encode_cin(code)
-    code += code_cin
-    codes.append(code)
-
-    for i in reversed(_OMOCODIA_SUBS_INDEXES):
         code_chars[i] = code_chars[i].translate(_OMOCODIA_ENCODE_TRANS)
-
         code = ''.join(code_chars)
         code_cin = encode_cin(code)
         code += code_cin
         codes.append(code)
 
+        for j in reversed(_OMOCODIA_SUBS_INDEXES):
+            code_chars[j] = code_chars[j].translate(_OMOCODIA_ENCODE_TRANS)
+            code = ''.join(code_chars)
+            code_cin = encode_cin(code)
+            code += code_cin
+            codes.append(code)
+      
     return codes
 
 
